@@ -38,3 +38,8 @@ our_list.remove("Bryant")
 for index in range(len(our_list)):
     print(our_list[index])
 
+file = open("input7.txt")
+lines = file.readlines()
+for line in lines:
+    items = line.split(" ")
+    print(items[0], items[1])
