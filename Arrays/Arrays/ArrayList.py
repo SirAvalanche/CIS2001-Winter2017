@@ -19,15 +19,18 @@ class ArrayList(object):
         return self._storage[index]
     
     def append(self, obj):
-        if self._size == self._capacity:
-            self._resize( 2 * self._capacity )
+        self._ensure_capacity()
         self._storage[self._size] = obj
         self._size += 1
 
-    def pop(self):
-        self._size -= 1
-        temp = self._storage[ self._size ] 
-        self._storage[ self._size ] = None
+    def pop(self, index = None):
+        if index == None:
+            self._size -= 1
+            temp = self._storage[ self._size ] 
+            self._storage[ self._size ] = None
+        else:
+            pass
+
         return temp
 
     def remove(self, obj):
@@ -43,6 +46,19 @@ class ArrayList(object):
             self._storage[self._size - 1] = None
             self._size -= 1
         return item_was_at_index != -1
+
+    def insert(self, index, obj):
+        self._ensure_capacity()
+        
+        for position in range(self._size, index, -1):
+            self._storage[position] = self._storage[position - 1]
+
+        self._storage[index] = obj
+        self._size += 1
+
+    def _ensure_capacity(self):
+        if self._size == self._capacity:
+            self._resize( 2 * self._capacity )
 
     def _resize(self, new_capacity):
         new_storage = self._make_array(new_capacity)
