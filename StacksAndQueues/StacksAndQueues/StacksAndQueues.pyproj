@@ -3,15 +3,15 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>ffeb5293-822c-4f37-ad90-7f72c92038fb</ProjectGuid>
+    <ProjectGuid>ba9e2ff8-521f-44ed-884d-a7783d68cb28</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>FunWithStacks.py</StartupFile>
+    <StartupFile>StacksAndQueues.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
     <OutputPath>.</OutputPath>
-    <Name>Arrays</Name>
-    <RootNamespace>Arrays</RootNamespace>
+    <Name>StacksAndQueues</Name>
+    <RootNamespace>StacksAndQueues</RootNamespace>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
     <DebugSymbols>true</DebugSymbols>
@@ -22,20 +22,7 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="ArrayListBase.py" />
-    <Compile Include="ArrayList.py">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Arrays.py" />
-    <Compile Include="FunWithStacks.py">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Queue.py">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Stack.py">
-      <SubType>Code</SubType>
-    </Compile>
+    <Compile Include="StacksAndQueues.py" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
