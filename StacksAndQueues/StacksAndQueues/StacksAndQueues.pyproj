@@ -22,6 +22,8 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Queue.py" />
+    <Compile Include="Stack.py" />
     <Compile Include="StacksAndQueues.py" />
   </ItemGroup>
   <PropertyGroup>
