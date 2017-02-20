@@ -37,5 +37,7 @@ class Queue():
         temp = [None] * new_size
         for index in range( self._size ):
             temp[index] = self._storage[self._front]
+            self._storage[ self._front ] = None
             self._front = ( self._front + 1 ) % len(self._storage)
         self._front = 0
+        self._storage = temp
