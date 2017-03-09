@@ -1,75 +1,60 @@
 class _Node:
-    def __init__(self, value):
+    def __init__(self, value, next = None, previous = None):
         self.Value = value
-        self.Next = None
-        self.Previous = None
+        self.Next = next
+        self.Previous = previous
 
 class DoublyLinkedList():
     def __init__(self):
-        self._head = None
-        self._tail = None
+        self._head = _Node(None)
+        self._head.Previous = self._head
+        self._head.Next = self._head
         self._size = 0
 
     def __len__(self):
         return self._size
 
-    def Add(self, item, index):
-        if index > self._size:
+    def IsEmpty(self):
+        return self._size == 0
+
+    def Add(self, item, index = None):
+        if index == None:
+            new_node = _Node(item, self._head, self._head.Previous)
+            self._head.Previous = new_node
+            new_node.Previous.Next = new_node
+        
+        elif index > self._size or index < 0:
             raise IndexError()
-        if index == 0:
-            new_node = _Node(item)
-            self._tail.Next = new_node
-            new_node.Previous = self._tail
-            self._tail = new_node
-            self._size += 1
-        elif index == self._size:
-            self.Enqueue(item)
+        
         else:
             current_node = self._head
-            current_index = 1
-            while current_index < index:
+            for current_index in range(index):
                 current_node = current_node.Next
-                current_index += 1
-            new_node = _Node(item)
-            new_node.Previous = current_node.Previous
-            new_node.Next = current_node
+
+            new_node = _Node(item,current_node.Next, current_node)
             new_node.Previous.Next = new_node
-            current_node.Previous = new_node
-            self._size += 1
-        
+            new_node.Next.Previous = new_node
 
-
-    def Enqueue(self, item):
-        new_node = _Node(item)
-        
-        if self._size == 0:
-            self._tail = new_node
-
-        new_node.Next = self._head
-
-        if self._head != None:
-            self._head.Previous = new_node
-
-        self._head = new_node
         self._size += 1
 
-    def First(self):
-        return self._tail.Value
+    def Get(self, index):
+        if index >= self._size or index < 0:
+            raise IndexError()
 
-    def DeQueue(self):
-        value = self._tail.Value
-        self._tail = self._tail.Previous
+        current_node = self._head.Next
+        for current_index in range(index):
+            current_node = current_node.Next
+        return current_node.Value
 
-        self._size -= 1
-        return value
 
 list = DoublyLinkedList()
-list.Enqueue(10)
-list.Enqueue(20)
-list.Enqueue(30)
-list.Add(25, 3)
+
+list.Add(10)
+list.Add(20)
+list.Add(30)
+list.Add(25,2)
 list.Add(5,0)
+list.Add(40, 5)
 
-
-while len(list) != 0:
-    print(list.DeQueue())
+for index in range(len(list)):
+    print(list.Get(index))
